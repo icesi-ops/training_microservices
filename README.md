@@ -3,9 +3,9 @@
 ![alt text](https://i.ibb.co/3cQdDny/microservices.png)
 
 There is no accepted definition of a microservice, you will find for example:
-> "Small autonomous services that work together" By: Sam Newman
-> "In short, the microservice architectural style is a approach to developing a single application as a suite  of small services, each running in its own process and communicating with lightweight mecahcnism, often and HTTP..."
-> "There is a bare minimun of centralized management of these services, which may be written in different programming languages and use different data storage technologies" by: Martin Fowler
+> "Small autonomous services that work together" By: Sam Newman  
+> "In short, the microservice architectural style is a approach to developing a single application as a suite  of small services, each running in its own process and communicating with lightweight mecahcnism, often and HTTP..."  
+> "There is a bare minimun of centralized management of these services, which may be written in different programming languages and use different data storage technologies" by: Martin Fowler  
 
 - REST
 - And Small whell chosen deployable units
