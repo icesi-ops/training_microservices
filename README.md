@@ -1,6 +1,6 @@
 # Microservices
 
-[!alt text](https://i.ibb.co/3cQdDny/microservices.png)
+![alt text](https://i.ibb.co/3cQdDny/microservices.png)
 
 There is no accepted definition of a microservice, you will find for example:
 > "Small autonomous services that work together" By: Sam Newman
@@ -13,7 +13,7 @@ There is no accepted definition of a microservice, you will find for example:
 
 ### How Does it Look?
 
-[!alt tex](https://i.ibb.co/CWvrFry/microservices2.png)
+![alt tex](https://i.ibb.co/CWvrFry/microservices2.png)
 
 ## Microservices Advantages
 
@@ -34,7 +34,7 @@ There is no accepted definition of a microservice, you will find for example:
 - CONTAINERIZATION
 - ORCHESTATION
 
-[!alt text](https://i.ibb.co/8mbbpJ2/microservices3.png)
+![alt text](https://i.ibb.co/8mbbpJ2/microservices3.png)
 
 ### References
 · https://www.geeksforgeeks.org/todo-list-app-using-flask-python/
