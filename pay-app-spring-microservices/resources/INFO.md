@@ -33,9 +33,9 @@ Microservicio que se encarga de registrar los pagos de una factura
 curl --location --request POST 'http://localhost:8010/pay' \
 --header 'Content-Type: application/json' \
 --data-raw '{
-    "idOperation": 2,
-    "idInvoice": 123,
-    "amount": 12.50,
+    "idOperation": 1,
+    "idInvoice": 1,
+    "amount": 900,
     "dateTime": "2021-05-21"
 }'
 ```

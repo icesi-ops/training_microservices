@@ -25,6 +25,8 @@ public class TransactionEvents {
         Invoice event = objectMapper.readValue(consumerRecord.value(), Invoice.class);
         log.info("Actulizando Invoice ***" + event.getIdInvoice());
         event.setState(1);
+   		log.info("Se ha pagado la factura # " + event.getIdInvoice());
+
         _dao.save(event);
     }
 }
