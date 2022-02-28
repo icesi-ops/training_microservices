@@ -24,6 +24,10 @@ Add the line  implementation 'org.springframework.cloud:spring-cloud-starter-con
 Install dnsmasq
 Create a config file for dnsmasq below the path /etc/dnsmasq.d
 Add the next line server=/consul/127.0.0.1#8600
+start dnsmasq
+modifiy resolv.conf to add ip loopback like dns server
+run command: dig app-service.service.consul
+
 
 
 docker run -d -p 8500:8500 -p 8600:8600/udp --network distribuidos --name consul consul:latest agent -server -bootstrap-expect 1 -ui -data-dir /tmp -client=0.0.0.0
