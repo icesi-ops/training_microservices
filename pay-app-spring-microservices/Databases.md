@@ -1,5 +1,5 @@
 docker network create distribuidos
-docker run -p 5432:5432 --name postgres --network distribuidos -e POSTGRES_PASSWORD=postgres -e POSTGRES_DB=db_invoce -d postgres:12-alpine
+docker run -p 5432:5432 --name postgres --network distribuidos -e POSTGRES_PASSWORD=postgres -e POSTGRES_DB=db_invoce -d icesiops/psotgres
 
 docker run -p 3306:3306 --name mysql --network distribuidos -e MYSQL_ROOT_PASSWORD=MYSQL -e MYSQL_DATABASE=db_operation -d mysql:8
 
