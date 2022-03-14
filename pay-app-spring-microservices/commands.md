@@ -28,6 +28,38 @@ start dnsmasq
 modifiy resolv.conf to add ip loopback like dns server
 run command: dig app-service.service.consul
 
-
-
 docker run -d -p 8500:8500 -p 8600:8600/udp --network distribuidos --name consul consul:latest agent -server -bootstrap-expect 1 -ui -data-dir /tmp -client=0.0.0.0
+
+### Load Balancer
+Create dockerfile 
+FROM haproxy:2.3
+COPY haproxy.cfg /usr/local/etc/haproxy/haproxy.cfg
+
+Create haproxy config
+defaults
+   timeout connect 5s
+   timeout client 1m
+   timeout server 1m
+
+frontend stats
+   bind *:1936
+   mode http
+   stats uri /
+   stats show-legends
+   no log
+
+frontend http_front
+   bind *:80
+   default_backend http_back
+
+backend http_back
+    balance roundrobin
+    server-template mywebapp 1-10 _web._tcp.service.consul resolvers consul resolve-opts allow-dup-ip resolve-prefer ipv4 check
+
+resolvers consul
+    nameserver consul 127.0.0.1:8600
+    accepted_payload_size 8192
+    hold valid 5s
+
+docker build -t icesiops/loadbalancer:0.1.0 .
+
