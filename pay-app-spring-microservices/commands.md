@@ -63,3 +63,36 @@ resolvers consul
 
 docker build -t icesiops/loadbalancer:0.1.0 .
 
+### Application Gateway
+
+In order to use Identity features, we need to have a data storage like Redis.
+
+docker run --network distribuidos -d --name express-gateway-data-store \
+                -p 6379:6379 \
+                redis:alpine
+2. Start the Express-Gateway instance
+Run the command inside appgw directory o keep in mind change the volume path to pointing to gateway.config.yml
+docker run -d --name express-gateway \
+    --network distribuidos \
+    -v .:/var/lib/eg \
+    -p 8080:8080 \
+    -p 9876:9876 \
+    express-gateway
+
+3. uncoment #key-auth
+4. connect to gw container
+docker exec -it express-gateway sh
+
+5. create users
+eg users create
+
+6. assign auth key
+eg credentials create -c sebas -t key-auth -q
+
+7. copy key 3DvE2HCfZCyfgxAjF40tOk:2U4Cojm11JaPJF6WRUcFBL
+
+8. Curl API endpoint as Sebas  with key credentials - SUCCESS!
+
+curl -H "Authorization: apiKey ${keyId}:${keySecret}" http://localhost:8080/config/app-pay/dev
+
+curl -H "Authorization: apiKey 3DvE2HCfZCyfgxAjF40tOk:2U4Cojm11JaPJF6WRUcFBL" http://localhost:8080/config/app-pay/dev
