@@ -9,6 +9,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import java.util.UUID;
 
 @Service
 public class TransactionEvents {
@@ -24,6 +25,7 @@ public class TransactionEvents {
     public void processTransactionEvent(ConsumerRecord<Integer, String> consumerRecord) throws JsonProcessingException {
         Transaction event = objectMapper.readValue(consumerRecord.value(), Transaction.class);
         log.info("Registrando Transaccion Invoice ***" + event.getIdInvoice());
+        event.setIdTransaction(UUID.randomUUID().toString());
         _dao.save(event);
     }
 }
