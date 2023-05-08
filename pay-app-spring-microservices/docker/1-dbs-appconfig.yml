@@ -53,3 +53,4 @@ services:
       - "8888:8888"
     networks:
       - distribuidos
+    restart: always

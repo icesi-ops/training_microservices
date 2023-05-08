@@ -13,6 +13,7 @@ services:
       - "8006:8006"
     networks:
       - distribuidos
+    restart: always
   app-pay:
     build: ../app-pay
     image: icesiops/apppay:0.1.0
@@ -21,6 +22,7 @@ services:
       - "8010:8010"
     networks:
       - distribuidos
+    restart: always
   app-transaction:
     build: ../app-transaction
     image: icesiops/apptransaction:0.1.0
@@ -29,6 +31,7 @@ services:
       - "8082:8082"
     networks:
       - distribuidos
+    restart: always
   consul:
     image: consul:latest
     command: agent -server -bootstrap-expect 1 -ui -data-dir /tmp -client=0.0.0.0
@@ -38,3 +41,4 @@ services:
       - "8600:8600/udp"
     networks:
       - distribuidos
+    restart: always

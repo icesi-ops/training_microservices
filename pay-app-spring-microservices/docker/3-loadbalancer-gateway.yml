@@ -10,10 +10,11 @@ services:
     image: icesiops/loadbalancer:0.1.0
     container_name: loadbalancer
     ports:
-      - "80:80"
+      - "9000:80"
       - "1936:1936"
     networks:
       - distribuidos
+    restart: always
   express-gateway-data-store:
     image: redis:alpine
     container_name: express-gateway-data-store

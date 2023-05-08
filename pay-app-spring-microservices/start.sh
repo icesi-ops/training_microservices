@@ -5,6 +5,8 @@ echo 'Waiting for appconfig up... ... ... ... ...'
 sleep 5
 docker-compose -f ./docker/2-services.yml up --build -d
 sudo ./scripts/config-dnsmasq.sh
+echo 'Waiting for consul up... ... ... ... ...'
+sleep 5
 docker-compose -f ./docker/3-loadbalancer-gateway.yml up --build -d
 
 # Mostrar estado actualizado
