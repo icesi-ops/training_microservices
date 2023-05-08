@@ -1,0 +1,43 @@
+version: '3'
+
+networks:
+  distribuidos:
+    driver: bridge
+
+services:
+  app-invoice:
+    build: ./app-invoice
+    image: icesiops/appinvoice:0.1.0
+    container_name: app-invoice
+    ports:
+      - "8006:8006"
+    networks:
+      - distribuidos
+  app-pay:
+    build: ./app-pay
+    image: icesiops/apppay:0.1.0
+    container_name: app-pay
+    ports:
+      - "8010:8010"
+    networks:
+      - distribuidos
+  app-transaction:
+    build: ./app-transaction
+    image: icesiops/apptransaction:0.1.0
+    container_name: app-transaction
+    ports:
+      - "8082:8082"
+    networks:
+      - distribuidos
+  consul:
+    image: consul:latest
+    command: agent -server -bootstrap-expect 1 -ui -data-dir /tmp -client=0.0.0.0
+    container_name: consul
+    ports:
+      - "8500:8500"
+      - "8600:8600/udp"
+    environment:
+      - ADVERTISED_HOST=servicekafka
+      - NUM_PARTITIONS=3
+    networks:
+      - distribuidos
