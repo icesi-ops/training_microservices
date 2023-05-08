@@ -6,16 +6,16 @@ admin:
 apiEndpoints:
   app-config:
     host: localhost
-    paths: ['/app-config']
+    paths: ['/app-config','/app-config/*']
   app-invoice:
     host: localhost
-    paths: ['/app-invoice']
+    paths: ['/app-invoice','/app-invoice/*']
   app-pay:
     host: localhost
-    paths: ['/app-pay']
+    paths: ['/app-pay','/app-pay/*']
   app-transaction:
     host: localhost
-    paths: ['/app-transaction']
+    paths: ['/app-transaction','/app-transaction/*']
 serviceEndpoints:
   app-config:
    url: 'http://loadbalancer/app-config/'
