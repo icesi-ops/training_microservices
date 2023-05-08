@@ -23,3 +23,10 @@ La informacion de como crear las bases de datos y sus respectivas tablas se incl
 - MongoDB (Base de Datos NoSQL)
 - Kafka (Gestor de Mensajería)
 - Github (Repositorio para proyecto y Configuraciones de micorservicios)
+
+## Guía de inicialización
+
+Ejecuta `sudo ./start.sh`. El comando engloba todos los comandos necesarios para levantar y configurar la infraestructura:
+- /scripts/clean.sh: Elimina los contenedores e imagenes para limpiar el proyecto.
+- /docker/: Los archivos docker compose construyen las imágenes y levantan los contenedores necesarios.
+- /scripts/dnsmasq.sh: Configura el servicio dnsmasq en la máquina host.
