@@ -1,10 +1,12 @@
 #!/bin/sh
 
+echo "\n\nInstalando Dnsmasq------------------------------"
+
 # Instalar dnsmasq
 sudo apt-get update
 sudo apt-get install dnsmasq -y
 
-echo "Actualizando /etc/dnsmasq.d/10-consul ..."
+echo "\n\nActualizando /etc/dnsmasq.d/10-consul-------------------------------"
 # Eliminar el archivo de configuracion de dnsmasq
 sudo rm -f /etc/dnsmasq.d/10-consul
 # Crear archivo de configuración para consul
@@ -16,7 +18,7 @@ cat /etc/dnsmasq.d/10-consul
 sudo systemctl restart dnsmasq
 
 
-echo "Actualizando /etc/resolv.conf ..."
+echo "\n\nActualizando /etc/resolv.conf------------------------------"
 # Agregar nameserver a /etc/resolv.conf
 # Eliminar el archivo /etc/resolv.conf
 sudo rm -f /etc/resolv.conf

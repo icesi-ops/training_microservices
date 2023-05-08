@@ -6,7 +6,7 @@ networks:
 
 services:
   app-invoice:
-    build: ./app-invoice
+    build: ../app-invoice
     image: icesiops/appinvoice:0.1.0
     container_name: app-invoice
     ports:
@@ -14,7 +14,7 @@ services:
     networks:
       - distribuidos
   app-pay:
-    build: ./app-pay
+    build: ../app-pay
     image: icesiops/apppay:0.1.0
     container_name: app-pay
     ports:
@@ -22,7 +22,7 @@ services:
     networks:
       - distribuidos
   app-transaction:
-    build: ./app-transaction
+    build: ../app-transaction
     image: icesiops/apptransaction:0.1.0
     container_name: app-transaction
     ports:
