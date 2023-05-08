@@ -5,6 +5,8 @@ docker rm -f $(docker ps -a | grep "icesiops/" | awk '{print $1}')
 docker rm -f $(docker ps -a | grep "consul" | awk '{print $1}')
 docker rm -f $(docker ps -a | grep "kafka" | awk '{print $1}')
 docker rm -f $(docker ps -a | grep "mongodb" | awk '{print $1}')
+docker rm -f $(docker ps -a | grep "redis" | awk '{print $1}')
+docker rm -f $(docker ps -a | grep "gateway" | awk '{print $1}')
 
 
 echo -e '\n\nBorrando Imagenes--------------------------------'

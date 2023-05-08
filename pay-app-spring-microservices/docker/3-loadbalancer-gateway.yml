@@ -11,6 +11,7 @@ services:
     container_name: loadbalancer
     ports:
       - "80:80"
+      - "1936:1936"
     networks:
       - distribuidos
   express-gateway-data-store:
