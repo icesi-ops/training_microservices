@@ -7,9 +7,14 @@ apiEndpoints:
   appconfig:
     host: localhost
     paths: ['/config','/config/*']
+  appinvoice:
+    host: localhost
+    paths: ['/invoice','/invoice/*']
 serviceEndpoints:
   appconfig:
-   url: 'http://loadbalancer/config/'
+    url: 'http://loadbalancer/config/'
+  appinvoice:
+    url: 'http://loadbalancer/invoice/all/'
 policies:
   - basic-auth
   - cors
@@ -20,16 +25,28 @@ policies:
   - proxy
   - rate-limit
 pipelines:
-  default:
-    apiEndpoints:
-      - appconfig
-    policies:
-    # Uncomment `key-auth:` when instructed to in the Getting Started guide.
-      - key-auth:
-      - proxy:
-          - action:
-              serviceEndpoint: appconfig 
-              changeOrigin: true
-              prependPath:  false
-              ignorePath:   false
-              stripPath:    false
+  pipeline1:
+      apiEndpoints:
+        - appconfig
+      policies:
+      # Uncomment `key-auth:` when instructed to in the Getting Started guide.
+      # - key-auth:
+        - proxy:
+            - action:
+               serviceEndpoint: appconfig 
+               changeOrigin: true
+               prependPath:  false
+               ignorePath:   false
+               stripPath:    false
+  pipeline2:
+      apiEndpoints:
+        - appinvoice
+      policies:
+        #- key-auth:  
+        - proxy:
+            - action:
+                serviceEndpoint: appinvoice
+                changeOrigin: true
+                prependPath:  false
+                ignorePath:   false
+                stripPath:    false
