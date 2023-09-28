@@ -10,11 +10,16 @@ apiEndpoints:
   appinvoice:
     host: localhost
     paths: ['/invoice','/invoice/*']
+  apptransaction:
+    host: localhost
+    paths: ['/transaction','/transaction/*']
 serviceEndpoints:
   appconfig:
     url: 'http://loadbalancer/config/'
   appinvoice:
     url: 'http://loadbalancer/invoice/all/'
+  apptransaction:
+    url: 'http://loadbalancer/transaction/all/'
 policies:
   - basic-auth
   - cors
@@ -46,6 +51,18 @@ pipelines:
         - proxy:
             - action:
                 serviceEndpoint: appinvoice
+                changeOrigin: true
+                prependPath:  false
+                ignorePath:   false
+                stripPath:    false
+  pipeline3:
+      apiEndpoints:
+        - apptransaction
+      policies:
+        #- key-auth:  
+        - proxy:
+            - action:
+                serviceEndpoint: apptransaction
                 changeOrigin: true
                 prependPath:  false
                 ignorePath:   false
