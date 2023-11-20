@@ -20,25 +20,30 @@ spec:
     }
     
     stages {
-        dir('./hello-world-python'){
         stage('Build') {
+            dir('./hello-world-python'){
             steps ('Install dependencies'){
                 sh 'pip install -r requirements.txt'
             }
+            }
         }
         stage('Run unit tests'){
+            dir('./hello-world-python'){
             steps {
                 sh 'pytest testRoutes.py'
             }
+            }
         }
         stage('Generate artifact'){
+            dir('./hello-world-python'){
             steps {
                 sh 'ls -lha'
                 sh 'pwd'
                 sh 'mkdir artifacts'
                 sh 'tar -czvf artifacts/python-app:${env.BUILD_ID}.tar.gz .'
             }
+            }
         }
     }
 }
-}
+
