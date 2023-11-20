@@ -7,21 +7,37 @@ apiVersion: v1
 kind: Pod
 spec:
   containers:
-  - name: shell
-    image: ubuntu
+  - name: python
+    image: python
     command:
     - sleep
     args:
     - infinity
+ 
 '''
-            defaultContainer 'shell'
+            defaultContainer 'python'
         }
     }
+    dir('./hello-world-python'){
     stages {
-        stage('List files') {
+        stage('Build') {
+            steps ('Install dependencies'){
+                sh 'pip install -r requirements.txt'
+            }
+        }
+        stage('Run unit tests'){
+            steps {
+                sh 'pytest testRoutes.py'
+            }
+        }
+        stage('Generate artifact'){
             steps {
                 sh 'ls -lha'
+                sh 'pwd'
+                sh 'mkdir artifacts'
+                sh 'tar -czvf artifacts/python-app:${env.BUILD_ID}.tar.gz .'
             }
         }
     }
+}
 }
