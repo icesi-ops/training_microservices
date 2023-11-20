@@ -18,8 +18,9 @@ spec:
             defaultContainer 'python'
         }
     }
-    dir('./hello-world-python'){
+    
     stages {
+        dir('./hello-world-python'){
         stage('Build') {
             steps ('Install dependencies'){
                 sh 'pip install -r requirements.txt'
