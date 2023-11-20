@@ -21,22 +21,22 @@ spec:
     
     stages {
         stage('Build') {
-            dir('./hello-world-python'){
             steps ('Install dependencies'){
+                dir('./hello-world-python'){
                 sh 'pip install -r requirements.txt'
             }
             }
         }
         stage('Run unit tests'){
-            dir('./hello-world-python'){
             steps {
+                dir('./hello-world-python'){
                 sh 'pytest testRoutes.py'
             }
             }
         }
         stage('Generate artifact'){
-            dir('./hello-world-python'){
             steps {
+                dir('./hello-world-python'){
                 sh 'ls -lha'
                 sh 'pwd'
                 sh 'mkdir artifacts'
