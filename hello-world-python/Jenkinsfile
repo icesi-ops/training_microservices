@@ -40,7 +40,7 @@ spec:
                 sh 'ls -lha'
                 sh 'pwd'
                 sh 'mkdir artifacts'
-                sh 'tar -czvf artifacts/python-app:"${env.BUILD_ID}".tar.gz .'
+                sh "tar -czvf artifacts/python-app:${env.BUILD_ID}.tar.gz ."
             }
             }
         }
