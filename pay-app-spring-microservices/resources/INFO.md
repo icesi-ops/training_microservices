@@ -48,7 +48,7 @@ Microservicio que se encarga de obtener los mensajes de kafka y actualizar el es
 
 * Curl del servicio para obtener el detalle de todos los invoices
 ```
-curl --location --request GET 'http://localhost:8006/all'
+curl --location --request GET 'dig'
 ```
 
 #### app-transaction

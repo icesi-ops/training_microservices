@@ -3,13 +3,31 @@ http:
 admin:
   port: 9876
   host: localhost
+
 apiEndpoints:
   appconfig:
     host: localhost
     paths: ['/config','/config/*']
+  appinvoice:
+    host: localhost
+    paths: ['/invoice','/invoice/*']  
+  apppay:
+    host: localhost
+    paths: ['/pay','/pay/*']
+  apptransaction:
+    host: localhost
+    paths: ['/transaction','/transaction/*']
+
 serviceEndpoints:
   appconfig:
-   url: 'http://loadbalancer/config/'
+    url: 'http://loadbalancer/config/'
+  apppay:
+    url: 'http://loadbalancer/pay/'
+  appinvoice:
+    url: 'http://loadbalancer/invoice/all/'
+  apptransaction:
+    url: 'http://loadbalancer/transaction/all/'
+
 policies:
   - basic-auth
   - cors
@@ -19,17 +37,53 @@ policies:
   - oauth2
   - proxy
   - rate-limit
+
 pipelines:
-  default:
+  pipeline1:
     apiEndpoints:
       - appconfig
     policies:
-    # Uncomment `key-auth:` when instructed to in the Getting Started guide.
-      - key-auth:
+      - key-auth:   # Agrega las opciones según tus necesidades para autenticación por clave
       - proxy:
           - action:
-              serviceEndpoint: appconfig 
+              serviceEndpoint: appconfig
               changeOrigin: true
               prependPath:  false
               ignorePath:   false
               stripPath:    false
+  pipeline2:
+    apiEndpoints:
+      - appinvoice
+    policies:
+      #- key-auth:   # Agrega las opciones según tus necesidades para autenticación por clave
+      - proxy:
+          - action:
+              serviceEndpoint: appinvoice
+              changeOrigin: true
+              prependPath:  false
+              ignorePath:   false
+              stripPath:    false
+  pipeline3:
+    apiEndpoints:
+      - apppay
+    policies:
+      #- key-auth:   # Agrega las opciones según tus necesidades para autenticación por clave
+      - proxy:
+          - action:
+              serviceEndpoint: apppay
+              changeOrigin: true
+              prependPath:  false
+              ignorePath:   false
+              stripPath:    false
+  pipeline4:
+    apiEndpoints:
+      - apptransaction
+    policies:
+      #- key-auth:   # Agrega las opciones según tus necesidades para autenticación por clave
+      - proxy:
+          - action:
+              serviceEndpoint: apptransaction
+              changeOrigin: true
+              prependPath:  false
+              ignorePath:   false
+              stripPath:    false            
