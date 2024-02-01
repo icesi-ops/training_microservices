@@ -1,0 +1,35 @@
+http:
+  port: 8080
+admin:
+  port: 9876
+  host: localhost
+apiEndpoints:
+  appconfig:
+    host: localhost
+    paths: ['/config','/config/*']
+serviceEndpoints:
+  appconfig:
+   url: 'http://loadbalancer/config/'
+policies:
+  - basic-auth
+  - cors
+  - expression
+  - key-auth
+  - log
+  - oauth2
+  - proxy
+  - rate-limit
+pipelines:
+  default:
+    apiEndpoints:
+      - appconfig
+    policies:
+    # Uncomment `key-auth:` when instructed to in the Getting Started guide.
+      - key-auth:
+      - proxy:
+          - action:
+              serviceEndpoint: appconfig 
+              changeOrigin: true
+              prependPath:  false
+              ignorePath:   false
+              stripPath:    false
