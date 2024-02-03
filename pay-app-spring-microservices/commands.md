@@ -96,3 +96,6 @@ eg credentials create -c sebas -t key-auth -q
 curl -H "Authorization: apiKey ${keyId}:${keySecret}" http://localhost:8080/config/app-pay/dev
 
 curl -H "Authorization: apiKey 3DvE2HCfZCyfgxAjF40tOk:2U4Cojm11JaPJF6WRUcFBL" http://localhost:8080/config/app-pay/dev
+curl -H "Authorization: apiKey 7AzWybVM0FaB7mTRadNUGR:5N50F0YcQ7U45JcD5C7J32" http://localhost:8080/app-config/app-pay/dev
+
+7AzWybVM0FaB7mTRadNUGR:5N50F0YcQ7U45JcD5C7J32
