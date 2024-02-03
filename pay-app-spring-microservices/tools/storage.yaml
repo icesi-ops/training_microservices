@@ -6,7 +6,6 @@ networks:
 
 services:
   mysql:
-    build: ../resources/mysql
     image: icesiops/mysql:0.1.0
     container_name: mysql
     ports:
@@ -16,7 +15,6 @@ services:
     networks:
       - distribuidos
   postgres:
-    build: ../resources/postgres
     image: icesiops/postgres:0.1.0
     container_name: postgres
     ports:

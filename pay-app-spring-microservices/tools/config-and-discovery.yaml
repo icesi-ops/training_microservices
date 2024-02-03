@@ -16,7 +16,7 @@ services:
       - distribuidos
     restart: always
   app-config:
-    build: ../app-config
+    image: alejandro945/app-config:latest
     container_name: app-config
     ports:
       - "8888:8888"

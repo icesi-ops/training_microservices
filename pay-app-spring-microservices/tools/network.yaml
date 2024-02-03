@@ -6,7 +6,7 @@ networks:
 
 services:
   loadbalancer:
-    build: ../haproxy
+    image: alejandro945/ha-proxy:latest
     container_name: loadbalancer
     ports:
       - "9000:80"

@@ -6,7 +6,7 @@ networks:
 
 services:
   app-invoice:
-    build: ../app-invoice
+    image: alejandro945/app-invoice:latest
     container_name: app-invoice
     ports:
       - "8006:8006"
@@ -14,7 +14,7 @@ services:
       - distribuidos
     restart: always
   app-pay:
-    build: ../app-pay
+    image: alejandro945/app-pay:latest
     container_name: app-pay
     ports:
       - "8010:8010"
@@ -22,7 +22,7 @@ services:
       - distribuidos
     restart: always
   app-transaction:
-    build: ../app-transaction
+    image: alejandro945/app-transaction:latest
     container_name: app-transaction
     ports:
       - "8082:8082"
