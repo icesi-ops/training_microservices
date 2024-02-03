@@ -1,0 +1,27 @@
+version: '3'
+
+networks:
+  distribuidos:
+    driver: bridge
+
+services:
+  consul:
+    image: consul:latest
+    command: agent -server -bootstrap-expect 1 -ui -data-dir /tmp -client=0.0.0.0
+    container_name: consul
+    ports:
+      - "8500:8500"
+      - "8600:8600/udp"
+    networks:
+      - distribuidos
+    restart: always
+  app-config:
+    build: ../app-config
+    container_name: app-config
+    ports:
+      - "8888:8888"
+    networks:
+      - distribuidos
+    restart: always
+    depends_on:
+      - consul

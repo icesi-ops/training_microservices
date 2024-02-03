@@ -1,0 +1,35 @@
+version: '3'
+
+networks:
+  distribuidos:
+    driver: bridge
+
+services:
+  loadbalancer:
+    build: ../haproxy
+    container_name: loadbalancer
+    ports:
+      - "9000:80"
+      - "1936:1936"
+    networks:
+      - distribuidos
+    restart: always
+  express-gateway-data-store:
+    image: redis:alpine
+    container_name: express-gateway-data-store
+    ports:
+      - "6379:6379"
+    networks:
+      - distribuidos
+  express-gateway:
+    image: express-gateway
+    container_name: express-gateway
+    ports:
+      - "8080:8080"
+      - "9876:9876"
+    volumes:
+      - type: bind
+        source: ../appgw
+        target: /var/lib/eg
+    networks:
+      - distribuidos

@@ -1,0 +1,34 @@
+version: '3'
+
+networks:
+  distribuidos:
+    driver: bridge
+
+services:
+  mysql:
+    build: ../resources/mysql
+    image: icesiops/mysql:0.1.0
+    container_name: mysql
+    ports:
+      - "3306:3306"
+    env_file:
+      - ../config/mysql.env
+    networks:
+      - distribuidos
+  postgres:
+    build: ../resources/postgres
+    image: icesiops/postgres:0.1.0
+    container_name: postgres
+    ports:
+      - "5432:5432"
+    env_file:
+      - ../config/postgres.env
+    networks:
+      - distribuidos
+  mongodb:
+    image: mongo:latest
+    container_name: mongodb
+    ports:
+      - "27017:27017"
+    networks:
+      - distribuidos
