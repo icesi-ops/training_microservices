@@ -1,6 +1,7 @@
 # Spring Boot Payment Microservices Application 🚀
 
 ![Architecture](./resources/microservicesarchitecture.png)
+![Infrastructure](./resources/infrastructure.png)
 
 ## Technologies
 
@@ -26,6 +27,7 @@ The **configuration microservice** must provide the configuration for all micros
 All microservices must consume the connection string from the centralized configuration service.
 
 Information about the endpoints available per microservice is included in the INFO.md document
+
 
 ## Storage
 
@@ -86,17 +88,17 @@ The default configuration specifies the following timeout settings:
 
 #### Backend
 
-**Services:** app-config-backend, app-invoice-backend, app-pay-backend, app-transaction-backend
-**Mode:** Configured for HTTP traffic.
-**Balance Algorithm:** Uses round-robin load balancing algorithm.
-**Path Manipulation:** Modifies the request path using http-request set-path.
-**Server Configuration:** Specifies backend servers with their respective service names and ports.
-**Resolvers:** Utilizes the consul resolver to resolve backend server addresses dynamically from Consul service discovery.
-**Health Checks:** Performs health checks on backend servers using check parameter.
-**IPv4 Resolution Preference:** Specifies IPv4 resolution preference using resolve-prefer ipv4.
+- Services: app-config-backend, app-invoice-backend, app-pay-backend, app-transaction-backend
+- Mode: Configured for HTTP traffic.
+- Balance Algorithm: Uses round-robin load balancing algorithm.
+- Path Manipulation: Modifies the request path using http-request set-path.
+- Server Configuration: Specifies backend servers with their respective service names and ports.
+- Resolvers: Utilizes the consul resolver to resolve backend server addresses dynamically from Consul service discovery.
+- Health Checks: Performs health checks on backend servers using check parameter.
+- IPv4 Resolution Preference: Specifies IPv4 resolution preference using resolve-prefer ipv4.
 
 #### Resolvers
 
-**Nameserver:** Specifies the Consul DNS server address (consul:8600).
-**Accepted Payload Size:** Sets the maximum payload size accepted from Consul DNS responses.
-**Hold Valid:** Specifies the validity duration for cached DNS responses as 5 seconds.
+- Nameserver: Specifies the Consul DNS server address (consul:8600).
+- Accepted Payload Size: Sets the maximum payload size accepted from Consul DNS responses.
+- Hold Valid: Specifies the validity duration for cached DNS responses as 5 seconds.
