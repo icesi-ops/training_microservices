@@ -6,7 +6,7 @@ networks:
 
 services:
   consul:
-    image: consul:latest
+    image: consul:1.15
     command: agent -server -bootstrap-expect 1 -ui -data-dir /tmp -client=0.0.0.0
     container_name: consul
     ports:

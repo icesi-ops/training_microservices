@@ -7,7 +7,6 @@ networks:
 services:
   app-invoice:
     build: ../app-invoice
-    image: icesiops/appinvoice:0.1.0
     container_name: app-invoice
     ports:
       - "8006:8006"
