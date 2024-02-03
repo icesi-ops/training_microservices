@@ -1,18 +1,6 @@
-# Spring Boot Payment Microservices Application
+# Spring Boot Payment Microservices Application 🚀
 
 ![Architecture](./resources/microservicesarchitecture.png)
-
-## Microservices Information
-
-The **invoices microservice** must list customer invoices and must also consume a queue to change the status of the invoice when it is paid through the payment microservice.
-
-The **payment microservice** must register the payment in its respective database and must also leave a message in a queue to update the invoice in the invoice microservice and must also leave a message in a queue to register the movement in the transaction microservice.
-
-The transaction microservice must list the transactions of an invoice, and must also consume a queue to obtain the payment transactions from the payment microservice.
-
-All microservices must consume the connection string from the centralized configuration service.
-
-Information about the endpoints available per microservice is included in the INFO.md document
 
 ## Technologies
 
@@ -24,6 +12,44 @@ Information about the endpoints available per microservice is included in the IN
 - MongoDB (Non-Relational Database)
 - Kafka (Message Broker)
 - Github (Project Repository)
+
+## Microservices Information
+
+The **invoices microservice** must list customer invoices and must also consume a queue to change the status of the invoice when it is paid through the payment microservice.
+
+The **payment microservice** must register the payment in its respective database and must also leave a message in a queue to update the invoice in the invoice microservice and must also leave a message in a queue to register the movement in the transaction microservice.
+
+The **transaction microservice** must list the transactions of an invoice, and must also consume a queue to obtain the payment transactions from the payment microservice.
+
+The **configuration microservice** must provide the configuration for all microservices also the most important action is that it provides consul address for service discovery registration.  
+
+All microservices must consume the connection string from the centralized configuration service.
+
+Information about the endpoints available per microservice is included in the INFO.md document
+
+## Storage
+
+### PostgreSQL
+
+The PostgreSQL database is used to store the invoices and transactions data and is accessed by the invoices and transactions microservices.
+
+### MySQL
+
+The MySQL database is used to store the payment data and is accessed by the payment microservice.
+
+### MongoDB
+
+The MongoDB database is used to store the transaction data and is accessed by the transaction microservice.
+
+## Networking
+
+### Application Gateway
+
+The application gateway is a reverse proxy that provides a single point of entry for all incoming traffic to the microservices application. It routes requests to the appropriate microservices based on the request URL path. This app gateway is implemented using HAProxy and is configured to use Consul for service discovery and has a redis cache for session management.
+
+### Consul
+
+Consul is a distributed service mesh to connect, secure, and configure services across any runtime platform and public or private cloud. It provides service discovery, health checking, key-value store, and multi-datacenter features.
 
 ### HAProxy
 
