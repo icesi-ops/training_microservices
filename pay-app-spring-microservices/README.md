@@ -1,6 +1,6 @@
 # Spring Boot Payment Microservices Application 🚀
 
-![Infrastructure](./resources/infrastructure.png)
+![Infrastructure](./resources/assets/infrastructure.png)
 
 ## Technologies
 
@@ -124,25 +124,25 @@ The default configuration specifies the following timeout settings:
 
 ### Dnsmasq
 
-![Dnsmasq](./resources/dnsmasq.png)
+![Dnsmasq](./resources/assets/dnsmasq.png)
 
 ### Application Gateway
 
-![Application Gateway](./resources/app-gateway.png)
+![Application Gateway](./resources/assets/app-gateway.png)
 
 ## HAProxy
 
-![HAProxy](./resources/haproxy.png)
+![HAProxy](./resources/assets/haproxy.png)
 
 ## Consul
 
-![Consul](./resources/consul.png)
+![Consul](./resources/assets/consul.png)
 
 ## Config
 
-![Config](./resources/config.png)
+![Config](./resources/assets/config.png)
 
 ## Services
 
-![Services](./resources/services.png)
+![Services](./resources/assets/services.png)
 
