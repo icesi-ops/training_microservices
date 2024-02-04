@@ -27,8 +27,9 @@ services:
     ports:
       - "8080:8080"
       - "9876:9876"
-    command: ["sh", "-c", "../scripts/users.sh"]
+    #command: sh -c "sh ./scripts/users.sh &"
     volumes:
+      - ../scripts:/scripts
       - type: bind
         source: ../appgw
         target: /var/lib/eg

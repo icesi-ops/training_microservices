@@ -1,6 +1,5 @@
 # Spring Boot Payment Microservices Application 🚀
 
-![Architecture](./resources/microservicesarchitecture.png)
 ![Infrastructure](./resources/infrastructure.png)
 
 ## Technologies
@@ -14,6 +13,26 @@
 - Kafka (Message Broker)
 - Github (Project Repository)
 
+## Getting Started
+
+Take into account that you need to have installed the following tools:
+
+- Docker
+- Docker Compose
+
+1. Execute the following command to start the microservices:
+
+```bash
+./scripts/deploy.sh
+```
+
+2. Creation of app gateway user and credentials
+
+```bash
+docker exec -it express-gateway sh
+./scripts/users.sh
+```
+
 ## Microservices Information
 
 The **invoices microservice** must list customer invoices and must also consume a queue to change the status of the invoice when it is paid through the payment microservice.
@@ -24,12 +43,10 @@ The **transaction microservice** must list the transactions of an invoice, and m
 
 The **configuration microservice** must provide the configuration for all microservices also the most important action is that it provides consul address for service discovery registration.  
 
-All microservices must consume the connection string from the centralized configuration service.
-
-Information about the endpoints available per microservice is included in the INFO.md document
+All microservices must consume the connection string from the centralized configuration service. Information about the endpoints available per microservice is included in the INFO.md document.
 
 
-## Storage
+## Storage 📜
 
 ### PostgreSQL
 
@@ -102,3 +119,30 @@ The default configuration specifies the following timeout settings:
 - Nameserver: Specifies the Consul DNS server address (consul:8600).
 - Accepted Payload Size: Sets the maximum payload size accepted from Consul DNS responses.
 - Hold Valid: Specifies the validity duration for cached DNS responses as 5 seconds.
+
+## Evidency
+
+### Dnsmasq
+
+![Dnsmasq](./resources/dnsmasq.png)
+
+### Application Gateway
+
+![Application Gateway](./resources/app-gateway.png)
+
+## HAProxy
+
+![HAProxy](./resources/haproxy.png)
+
+## Consul
+
+![Consul](./resources/consul.png)
+
+## Config
+
+![Config](./resources/config.png)
+
+## Services
+
+![Services](./resources/services.png)
+

@@ -4,27 +4,27 @@ admin:
   port: 9876
   host: localhost
 apiEndpoints:
-  app-config:
+  appconfig:
     host: localhost
-    paths: ['/app-config','/app-config/*']
-  app-invoice:
+    paths: ['/config','/config/*']
+  appinvoice:
     host: localhost
-    paths: ['/app-invoice','/app-invoice/*']
-  app-pay:
+    paths: ['/invoice','/invoice/*']
+  apppay:
     host: localhost
-    paths: ['/app-pay','/app-pay/*']
-  app-transaction:
+    paths: ['/pay','/pay/*']
+  apptransaction:
     host: localhost
-    paths: ['/app-transaction','/app-transaction/*']
+    paths: ['/transaction','/transaction/*']
 serviceEndpoints:
-  app-config:
-   url: 'http://loadbalancer/app-config/'
-  app-invoice:
-   url: 'http://loadbalancer/app-invoice/'
-  app-pay:
-   url: 'http://loadbalancer/app-pay/'
-  app-transaction:
-   url: 'http://loadbalancer/app-transaction/'
+  appconfig:
+   url: 'http://loadbalancer/config/'
+  appinvoice:
+   url: 'http://loadbalancer/invoice/'
+  apppay:
+   url: 'http://loadbalancer/pay/'
+  apptransaction:
+   url: 'http://loadbalancer/transaction/'
 policies:
   - basic-auth
   - cors
@@ -37,34 +37,34 @@ policies:
 pipelines:
   default:
     apiEndpoints:
-      - app-config
-      - app-pay
-      - app-transaction
-      - app-invoice
+      - appconfig
+      - apppay
+      - apptransaction
+      - appinvoice
     policies:
       - key-auth:
       - proxy:
-          - action:
-              serviceEndpoint: app-config 
-              changeOrigin: true
-              prependPath:  false
-              ignorePath:   false
-              stripPath:    false
-           - action:
-              serviceEndpoint: app-pay
-              changeOrigin: true
-              prependPath:  false
-              ignorePath:   false
-              stripPath:    false
-          - action:
-              serviceEndpoint: app-transaction
-              changeOrigin: true
-              prependPath:  false
-              ignorePath:   false
-              stripPath:    false
-          - action:
-              serviceEndpoint: app-invoice
-              changeOrigin: true
-              prependPath:  false
-              ignorePath:   false
-              stripPath:    false
+        - action:
+            serviceEndpoint: appconfig 
+            changeOrigin: true
+            prependPath:  false
+            ignorePath:   false
+            stripPath:    false
+        - action:
+            serviceEndpoint: apppay
+            changeOrigin: true
+            prependPath:  false
+            ignorePath:   false
+            stripPath:    false
+        - action:
+            serviceEndpoint: apptransaction
+            changeOrigin: true
+            prependPath:  false
+            ignorePath:   false
+            stripPath:    false
+        - action:
+            serviceEndpoint: appinvoice
+            changeOrigin: true
+            prependPath:  false
+            ignorePath:   false
+            stripPath:    false

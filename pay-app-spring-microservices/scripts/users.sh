@@ -1,13 +1,13 @@
-#!/bin/bash
+#!/bin/sh
 
 # Variables
 USERNAME="alejo"
 FIRSTNAME="Alejandro"
 LASTNAME="Varela"
-CREDENTIAL_TYPE="keyauth"
+CREDENTIAL_TYPE="key-auth"
 
 # Create user
-eg users create -p "username=$USERNAME" -p "firstName=$FIRSTNAME" -p "lastName=$LASTNAME" -q
+eg users create -p "username=$USERNAME" -p "firstname=$FIRSTNAME" -p "lastname=$LASTNAME" -q
 
 # Create credentials
 eg credentials create -c "$USERNAME" -t "$CREDENTIAL_TYPE" -q
