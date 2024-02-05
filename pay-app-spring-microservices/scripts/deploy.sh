@@ -48,7 +48,7 @@ execute_command "docker-compose -f ./tools/broker.yaml up --build -d" "Broker"
 wait_message "Waiting for broker tier" 5
 
 # Deploy App Tier
-execute_command "docker-compose -f ./tools/compute.yaml up --build -d" "App Tier"
+execute_command "docker-compose -f ./tools/compute.yaml up --scale app-invoice=2 --build -d" "App Tier"
 
 # Wait for app tier to be up
 wait_message "Waiting for app tier" 5

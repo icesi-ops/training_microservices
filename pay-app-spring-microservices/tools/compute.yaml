@@ -7,10 +7,8 @@ networks:
 services:
   app-invoice:
     image: alejandro945/app-invoice:latest
-    deploy:
-      replicas: 2
-    ports:
-      - "8006-8007:8006"
+    expose:
+      - "8006"
     networks:
       - distribuidos
     restart: always
