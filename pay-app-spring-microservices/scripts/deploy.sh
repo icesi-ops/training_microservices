@@ -36,7 +36,7 @@ wait_message "Waiting for storage tier" 5
 execute_command "docker-compose -f ./tools/config-and-discovery.yaml up --build -d" "Config and Discovery"
 
 # dnsmasq Configuration
-execute_command "sudo ./dnsmasq.sh" "dnsmasq configuration"
+#execute_command "sudo ./tools/dnsmasq.sh" "dnsmasq configuration"
 
 # Wait for config and discovery tier to be up
 wait_message "Waiting for config and sevice discovery" 5
