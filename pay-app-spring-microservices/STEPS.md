@@ -38,7 +38,7 @@ docker build -t alexjr2002/app-config .
 docker run -p 8888:8888 --name app-config --network distribuidos -d alexjr2002/app-config
 ```
 ### 4.4. Working proof
-![alt text](image.png)
+![alt text](app-config-proof.png)
 ## 5. Running app-invoice service
 ### 5.1. Dockerfile modification
 ```Dockerfile
@@ -65,4 +65,4 @@ docker build -t alexjr2002/app-invoice .
 docker run -p 8006:8006 --name app-invoice --network distribuidos -d alexjr2002/app-invoice
 ```
 ### 5.4. Working proof
-![alt text](image-1.png)
+![alt text](app-invoice-proof.png)
