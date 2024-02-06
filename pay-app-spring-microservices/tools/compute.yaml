@@ -1,0 +1,30 @@
+version: '3'
+
+networks:
+  distribuidos:
+    driver: bridge
+
+services:
+  app-invoice:
+    image: alejandro945/app-invoice:latest
+    expose:
+      - "8006"
+    networks:
+      - distribuidos
+    restart: always
+  app-pay:
+    image: alejandro945/app-pay:latest
+    container_name: app-pay
+    ports:
+      - "8010:8010"
+    networks:
+      - distribuidos
+    restart: always
+  app-transaction:
+    image: alejandro945/app-transaction:latest
+    container_name: app-transaction
+    ports:
+      - "8082:8082"
+    networks:
+      - distribuidos
+    restart: always

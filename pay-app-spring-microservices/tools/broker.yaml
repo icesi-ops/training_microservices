@@ -1,0 +1,18 @@
+version: '3'
+
+networks:
+  distribuidos:
+    driver: bridge
+
+services:
+  servicekafka:
+    image: johnnypark/kafka-zookeeper:2.6.0
+    container_name: servicekafka
+    platform: linux/amd64
+    ports:
+      - "2181:2181"
+      - "9092:9092"
+    env_file:
+      - ../config/kafka.env
+    networks:
+      - distribuidos
