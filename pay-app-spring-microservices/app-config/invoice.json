@@ -1,0 +1,32 @@
+{
+    "name":"app-invoice",
+    "profiles":["dev"],
+    "label":null,
+    "version":"76ca227bc376a79cb1321ffcea2dab90a0f00bd9",
+    "state":null,
+    "propertySources":[
+        {
+            "name":"https://github.com/icesi-ops/training_microservices.git/pay-app-spring-microservices/config/app-invoice-dev.properties",
+            "source":{
+                "spring.application.name":"app-invoice",
+                "server.port":"8006",
+                "spring.kafka.consumer.bootstrap-servers":"servicekafka:9092",
+                "spring.kafka.admin.properties.bootstrap.servers":"servicekafka:9092",
+                "spring.kafka.consumer.key-deserializer":"org.apache.kafka.common.serialization.IntegerDeserializer",
+                "spring.kafka.consumer.value-deserializer":"org.apache.kafka.common.serialization.StringDeserializer",
+                "spring.kafka.consumer.group-id":"invoice-events-listener-group",
+                "logging.level.org.hibernate.SQL":"debug",
+                "spring.jpa.properties.hibernate.enable_lazy_load_no_trans":"true",
+                "spring.jpa.hibernate.ddl-auto":"create",
+                "spring.datasource.url":"jdbc:postgresql://postgres:5432/db_invoice",
+                "spring.datasource.username":"postgres",
+                "spring.datasource.password":"postgres",
+                "spring.datasource.driver-class-name":"org.postgresql.Driver",
+                "spring.jpa.database-platform":"org.hibernate.dialect.PostgreSQL95Dialect",
+                "spring.cloud.consul.host":"consul",
+                "spring.cloud.consul.port":"8500",
+                "spring.cloud.consul.discovery.health-check-interval":"5s",
+                "spring.cloud.consul.discovery.prefer-ip-address":"true"}
+        }
+    ]
+}
