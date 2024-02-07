@@ -3,7 +3,7 @@
 Build database for invoice service using postgres. [Directory](https://github.com/maperez1225/training_microservices/tree/master/pay-app-spring-microservices/resources/postgres).
 
 
-Run in /resources/postgres
+Run in resources/postgres/
 
 
 `docker build -t maperez1225/invoice-db:0.0.1 .`
@@ -25,7 +25,7 @@ Run an instance of Kafka and Consul
 Build image including all dependencies and correct port mappings. [Directory](https://github.com/maperez1225/training_microservices/tree/master/pay-app-spring-microservices/app-config).
 
 
-Run in /app-config
+Run in app-config/
 
 
 `docker build -t maperez1225/app-config:0.0.1 .`
@@ -38,10 +38,22 @@ Run in /app-config
 Build image including all dependencies and correct port mappings. [Directory](https://github.com/maperez1225/training_microservices/tree/master/pay-app-spring-microservices/app-invoice).
 
 
-Run in /app-invoice
+Run in app-invoice/
 
 
 `docker build -t maperez1225/app-invoice:0.0.1 .`
 
 
 `docker run -d --rm -p 8006:8006 --network distribuidos --name app-invoice maperez1225/app-invoice:0.0.1`
+
+### Functionality:
+Containers running
+![alt text](resources/containers.png)
+
+
+Invoice App Config
+![alt text](resources/app-invoice-config-dev.png)
+
+
+Consul
+![alt text](resources/consul.png)
