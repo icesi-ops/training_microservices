@@ -7,7 +7,7 @@ A continuacion se detallan los scripts para la creación de las bases de datos r
 
 1. Levantar docker de PostgreSQL (Al levantar el docker automaticamente se incluye la base de datos a crear)
 ```
-$ docker run -p 5434:5432  --name postgres --network aforo255-test -e POSTGRES_PASSWORD=postgres -e  POSTGRES_DB=db_invoice -d postgres:12-alpine
+$ docker run -p 5434:5432  --name postgres --network distribuidos -e POSTGRES_PASSWORD=postgres -e  POSTGRES_DB=db_invoice -d postgres:12-alpine
 ```
 
 2. Si se desea agregar nueva base de datos se debe ingresar al docker de Postgres y crear la base:
