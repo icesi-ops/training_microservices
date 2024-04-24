@@ -7,15 +7,15 @@ apiVersion: v1
 kind: Pod
 spec:
   containers:
-  - name: nodejs
-    image: nodejs
+  - name: node
+    image: node
     command:
     - sleep
     args:
     - infinity
  
 '''
-            defaultContainer 'nodejs'
+            defaultContainer 'node'
         }
     }
     
