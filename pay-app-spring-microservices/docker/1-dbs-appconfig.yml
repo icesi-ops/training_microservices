@@ -1,0 +1,56 @@
+version: '3'
+
+networks:
+  distribuidos:
+    driver: bridge
+
+services:
+  postgres:
+    build: ../resources/postgres
+    image: icesiops/postgres:0.1.0
+    container_name: postgres
+    ports:
+      - "5432:5432"
+    environment:
+      - POSTGRES_PASSWORD=postgres
+      - OSTGRES_DB=db_invoice
+    networks:
+      - distribuidos
+  mysql:
+    build: ../resources/mysql
+    image: icesiops/mysql:0.1.0
+    container_name: mysql
+    ports:
+      - "3306:3306"
+    environment:
+      - MYSQL_ROOT_PASSWORD=mysql
+      - MYSQL_DATABASE=db_operation
+    networks:
+      - distribuidos
+  mongodb:
+    image: mongo:latest
+    container_name: mongodb
+    ports:
+      - "27017:27017"
+    networks:
+      - distribuidos
+  servicekafka:
+    image: johnnypark/kafka-zookeeper
+    container_name: servicekafka
+    ports:
+      - "2181:2181"
+      - "9092:9092"
+    environment:
+      - ADVERTISED_HOST=servicekafka
+      - NUM_PARTITIONS=3
+    networks:
+      - distribuidos
+  app-config:
+    build: ../app-config
+    image: icesiops/appconfig:0.1.0
+    container_name: app-config
+    ports:
+      - "8888:8888"
+    networks:
+      - distribuidos
+    restart: always
